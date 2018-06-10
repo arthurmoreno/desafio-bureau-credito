@@ -34,17 +34,15 @@ Iniciei minha pesquisa para escolher a arquitetura da base de dados A, pesquisan
 > (...)
 > 3) Security
 > It is important to consider both the physical risk to data (e.g. the risk from fire, theft, etc.) and the risks from hacking, or from unintentional corruption of data through human error. Any system you implement must address the issue of keeping your data secure.
-
+>
 > * [Top five database security threats](https://www.imperva.com/Resources/Whitepapers/top-5-database-security-threats)
-
 > 1. Excessive, Inappropriate and Unused Privileges
 > 2. Privilege abuse
 > 3. Insufficient Web Application Security
 > 4. Weak audit trails
 > 5. Unsecured storage media
-
+>
 > * [7 Database Security Best Practices](https://www.esecurityplanet.com/network-security/6-database-security-best-practices.html)
-
 > 1. Ensure Physical Database Security
 > 2. Use Web Application and Database Firewalls
 > 3. Harden Your Database to Fullest Extent Possible
@@ -60,9 +58,7 @@ Apesar dessa pesquisa ter ajudado em como deixar a sua aplicação mais segura e
 Após passar algum tempo pesquisando comparações na internet sobre os diversos sistemas de banco de dados disponíveis no mercado e na comunidade. Percebi que posts de usuários na internet muitas vezes não são conclusivos e as vezes tendenciosos. (Nesse ponto havia escolhido o OracleDB para a Base de dados A)
 
 > * [A Oracle foi Declarada Líder em Segurança de Banco de Dados](https://www.oracle.com/br/database/security/index.html)
-
 > * [SQLite vs MySQL vs PostgreSQL: A Comparison Of Relational Database Management Systems](https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems)
-
 > * [MySQL vs Oracle](https://itxdesign.com/mysql-vs-oracle/)
 
 Felizmente após realizar uma busca um pouco mais extensa sobre o assunto na internet, descobri o livro 'Database Hacker's Handbook' em uma resposta no stackoverflow
@@ -201,3 +197,5 @@ Escolhi fazer a camada de Disponibilização dos Dados com React. Outro fator qu
 ## Escalabilidade
 
 dissertar sobre as estratégias de escalabilidade do sistema
+
+workers no guicorn
