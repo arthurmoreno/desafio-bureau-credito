@@ -1,0 +1,50 @@
+version: '2'
+
+volumes:
+
+    postgres-bureau:
+      driver: local
+    mysql-bureau:
+      driver: local 
+    mongo-bureau:
+      driver: local 
+
+services:
+
+  postgres:
+    restart: always
+    image: postgres
+    container_name: postgres
+    environment:
+      - DEBUG=false
+      - DB_USER=bureau
+      - DB_PASS=bureau
+      - DB_NAME=bureau
+    volumes:
+      - postgres-bureau:/var/lib/postgresql
+    ports:
+      - 5432:5432
+
+  mysql:
+    image: mysql
+    hostname: mysql
+    restart: on-failure
+    container_name: mysql
+    ports:
+      - 6603:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "mypassword"
+    volumes:
+      - mysql-bureau:/var/lib/mysql
+
+  mongo:
+    image: mongo
+    hostname: mongo
+    restart: on-failure
+    container_name: mongo
+    volumes:
+      - mongo-bureau:/data/db
+    expose:
+      - 27017
+    ports:
+      - 27017:27017
