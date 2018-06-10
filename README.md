@@ -156,7 +156,7 @@ extremamente rápido.
 #### Dados:
 O último serviço, acessa a Base C e tem como principal funcionalidade, rastrear eventos rela-
 cionados a um determinado CPF.
-* Última consulta do CPF em um Bureau de crédito (Serasa e outros).
+* Última consulta do CPF em um Bureau de crédito.
 * Movimentação financeira nesse CPF.
 * Dados relacionados a última compra com cartao de crédito vinculado ao CPF.
 
