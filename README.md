@@ -9,7 +9,7 @@ segurança em TI. Afinal, nosso principal ativo são dados sensíveis dos consum
 
 ## Arquitetura proposta
 
-![Arquitetura](https://github.com/arthurmoreno/desafio-bureau-credito/arquitetura.svg)
+![Arquitetura](https://github.com/arthurmoreno/desafio-bureau-credito/blob/master/arquitetura.svg)
 
 ## Armazenamento
 
