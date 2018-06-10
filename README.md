@@ -3,8 +3,7 @@
 ## Problema
 
 Aqui trabalhamos constantemente com grande volume e complexidade de dados. Sabendo disso,
-precisamos que você elabore uma solução que ofereça armazenamento, processamento e disponi-
-bilização desses dados, sempre considerando que tudo deve estar conforme as boas práticas de
+precisamos que você elabore uma solução que ofereça armazenamento, processamento e disponibilização desses dados, sempre considerando que tudo deve estar conforme as boas práticas de
 segurança em TI. Afinal, nosso principal ativo são dados sensíveis dos consumidores brasileiros.
 
 ## Arquitetura proposta
@@ -30,34 +29,29 @@ A primeira delas, que chamamos de Base A, é extremamente sensível e deve ser p
 
 Iniciei minha pesquisa para escolher a arquitetura da base de dados A, pesquisando sobre segurança de dados e dados sensiveis na web. Essa pesquisa inicial me trouxe muitas informações essenciais e deixou o assunto mais claro (?). Ela elucidou os principais pontos fracos na segurança de dados e também deixou claro as principais medidas utilizadas pelas empresas para garantir a segurança dos dados. Abaixo um resumo das principais informações obtidas nessa primeira etapa.
 
--->> Pesquisa inicial na web
+> Pesquisa inicial na web
+> * [Top 10 considerations when choosing a Database Management system](https://datahq.co.uk/knowledge-centre/blog/top-10-considerations-when-choosing-a-database-management-system)
+> (...)
+> 3) Security
+> It is important to consider both the physical risk to data (e.g. the risk from fire, theft, etc.) and the risks from hacking, or from unintentional corruption of data through human error. Any system you implement must address the issue of keeping your data secure.
 
-    --> Top 10 considerations when choosing a Database Management system
-    https://datahq.co.uk/knowledge-centre/blog/top-10-considerations-when-choosing-a-database-management-system
+> * [Top five database security threats](https://www.imperva.com/Resources/Whitepapers/top-5-database-security-threats)
 
-    (...)
-    3) Security
-    It is important to consider both the physical risk to data (e.g. the risk from fire, theft, etc.) and the risks from hacking, or from unintentional corruption of data through human error. Any system you implement must address the issue of keeping your data secure.
+> 1. Excessive, Inappropriate and Unused Privileges
+> 2. Privilege abuse
+> 3. Insufficient Web Application Security
+> 4. Weak audit trails
+> 5. Unsecured storage media
 
-    --> Top five database security threats
-    https://www.imperva.com/Resources/Whitepapers/top-5-database-security-threats
+> * [7 Database Security Best Practices](https://www.esecurityplanet.com/network-security/6-database-security-best-practices.html)
 
-    1. Excessive, Inappropriate and Unused Privileges
-    2. Privilege abuse
-    3. Insufficient Web Application Security
-    4. Weak audit trails
-    5. Unsecured storage media
-
-    --> 7 Database Security Best Practices
-    https://www.esecurityplanet.com/network-security/6-database-security-best-practices.html
-
-    1. Ensure Physical Database Security
-    2. Use Web Application and Database Firewalls
-    3. Harden Your Database to Fullest Extent Possible
-    4. Encrypt Your Data
-    5. Minimize Value of Your Database
-    6. Manage Database Access Tightly
-    7. Audit and Monitor Database Activity
+> 1. Ensure Physical Database Security
+> 2. Use Web Application and Database Firewalls
+> 3. Harden Your Database to Fullest Extent Possible
+> 4. Encrypt Your Data
+> 5. Minimize Value of Your Database
+> 6. Manage Database Access Tightly
+> 7. Audit and Monitor Database Activity
 
 Apesar dessa pesquisa ter ajudado em como deixar a sua aplicação mais segura e como utilizar melhor os recursos de um banco de dados, ela não deixava claro como efetuar uma boa escolha em relação a qual Sistema de Gerenciamento de Banco de Dados (DMS) utilizar. Por essa razão comecei a realizar outra pesquisa para responder a outra pergunta:
 
@@ -65,14 +59,11 @@ Apesar dessa pesquisa ter ajudado em como deixar a sua aplicação mais segura e
 
 Após passar algum tempo pesquisando comparações na internet sobre os diversos sistemas de banco de dados disponíveis no mercado e na comunidade. Percebi que posts de usuários na internet muitas vezes não são conclusivos e as vezes tendenciosos. (Nesse ponto havia escolhido o OracleDB para a Base de dados A)
 
-    --> A Oracle foi Declarada Líder em Segurança de Banco de Dados
-    https://www.oracle.com/br/database/security/index.html
+> * [A Oracle foi Declarada Líder em Segurança de Banco de Dados](https://www.oracle.com/br/database/security/index.html)
 
-    --> SQLite vs MySQL vs PostgreSQL: A Comparison Of Relational Database Management Systems
-    https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems
+> * [SQLite vs MySQL vs PostgreSQL: A Comparison Of Relational Database Management Systems](https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems)
 
-    --> MySQL vs Oracle
-    https://itxdesign.com/mysql-vs-oracle/
+> * [MySQL vs Oracle](https://itxdesign.com/mysql-vs-oracle/)
 
 Felizmente após realizar uma busca um pouco mais extensa sobre o assunto na internet, descobri o livro 'Database Hacker's Handbook' em uma resposta no stackoverflow
     --> PostgreSQL's Security Compared to MySQL, etc
@@ -206,3 +197,7 @@ Talvez a melhor solução fosse utilizar algum framework que utiliza-se javascri
     https://br.vuejs.org/v2/guide/comparison.html
 
 Escolhi fazer a camada de Disponibilização dos Dados com React. Outro fator que influenciou minha decisão foi um projeto que ajudei a desenvolver, onde o front-end consumia os dados de APIs de maneira semelhante.
+
+## Escalabilidade
+
+dissertar sobre as estratégias de escalabilidade do sistema
