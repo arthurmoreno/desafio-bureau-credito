@@ -68,19 +68,16 @@ Após passar algum tempo pesquisando comparações na internet sobre os diversos
 
 Felizmente após realizar uma busca um pouco mais extensa sobre o assunto na internet, descobri o livro 'Database Hacker's Handbook' em uma resposta no stackoverflow
 > * [PostgreSQL's Security Compared to MySQL, etc](https://stackoverflow.com/questions/6475228/postgresqls-security-compared-to-mysql-etc)
---=== Continuar a redação desta parte ===--
 
+O livro trás alguns pontos que ajudaram na minha decisão:
+> * quantidade de issues de segurança reportados em cada DMS
+> * diferentes DMS foram analisadas de formas diferentes, algumas estão a mais tempo no mercado e foram analisadas por mais estudos. Além disso cada uma delas tem falhas diferentes das outras, 
+> * As métricas, critérios e condições para avaliar qual a base de dados mais segura são quase infindaveis e pode ser perigoso tomar uma decisão sobre qual a melhor base de dados num contexto geral pode ser perigoso
+> * Finalmente, quanto mais você sabe sobre um sistema, melhor você será capaz de torna-lo seguro.
+> * Por fim, a base de dados mais segura é aquela que você mais tem conhecimento e experiência!
 
-* quantidade de issues de segurança em cada DMS
-* diferentes DMS foram analisadas de formas diferentes, algumas estão a mais tempo no mercado e foram analisadas por mais estudos. Além disso cada uma delas tem falhas diferentes das outras, 
-* As métricas, critérios e condições para avaliar qual a base de dados mais segura são quase infindaveis e pode ser perigoso tomar uma decisão sobre qual a melhor base de dados num contexto geral pode ser perigoso
-* Finalmente, quanto mais você sabe sobre um sistema, melhor você será capaz de torna-lo seguro.
-* Por fim, a base de dados mais segura é aquela que você mais tem conhecimento e experiência!
-
-
-    --> Leveis de segurança do postgres
-    https://www.postgresql.org/docs/7.0/static/security.htm
-
+Escolhi o Postgres pois já possuo certa familiaridade com ele. Além disso o Postgres possui o menor numero de issues reportadas e possui varios niveis de segurança.
+> * [Leveis de segurança do postgres](https://www.postgresql.org/docs/7.0/static/security.htm)
 
 #### Detalhes de acesso a base
 
