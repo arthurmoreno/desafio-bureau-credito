@@ -134,11 +134,13 @@ cionados a um determinado CPF.
 #### Escolha:
 * MongoDB
 
-Por se tratar de alta velocidade de acesso aos dados e não necessitar de segurança nos dados. Além de possuir familiaridade com a ferramenta.
+Por se tratar de alta velocidade de acesso aos dados e não necessitar de segurança. Além disso, já possuo familiaridade com a ferramenta.
 > * [MongoDB vs MySQL Comparison: Which Database is Better?](https://hackernoon.com/mongodb-vs-mysql-comparison-which-database-is-better-e714b699c38b)
 > * [Evaluating NoSQL performance: Which database is right for your data?](https://jaxenter.com/evaluating-nosql-performance-which-database-is-right-for-your-data-107481.html)
 
 ## Trafego
+
+Para desenvolver os Micro serviços, as tecnologias que escolhi foram flask e SQL Alchemy. Por causa de suas simplicidade, facilidade de uso e aprendizado (Devido ao tempo disponível para desenvolvimento).
 
 ### Micro Serviço A
 
@@ -146,7 +148,7 @@ O papel do micro serviço A é acessar a base de dados A e realizar todo tipo de
 
 ### Micro Serviço B
 
-O papel do micro serviço B é consumir os dados da base B e realizar o cálculo do Score. Fornecendo apenas o ultimo para a camada da aplicação. O cálculo do Score deverá ser realizado por uma lib externa, para simular a proteção do conhecimento necessário para realizar essa operação. Para entregar a informação do score de maneira otimizada uma cache será utilizada
+O papel do micro serviço B é consumir os dados da base B e realizar o cálculo do Score. Fornecendo apenas o ultimo para a camada da aplicação. O cálculo do Score deverá ser realizado por uma lib externa, para simular a proteção do conhecimento necessário para realizar essa operação. Para entregar a informação do score de maneira otimizada uma cache será utilizada, para o desenvolvimento desse cache será utilizado o Redis.
 
 ### Micro Serviço C
 
@@ -156,31 +158,60 @@ O micro serviço C deve ser capaz de condensar todas as informações referentes
 
 Inicialmente imaginei uma solução em django com uma logica que iria atualizar uma quarta base de dados (base D). Essa quarta base de dados se comportaria como uma cache. Quando um dado fosse solicitado pelo front-end a aplicação django iria verificar a existencia do mesmo na quarta base (através do ORM do django), e caso o dado não existisse ele deveria ser solicitado aos micro-serviços. Porém ao pesquisar se existia algum tipo de pacote que resolvesse o problema, percebi que essa solução poderia ser bastante lenta, pois o front-end estaria aguardando a atualização dos dados na base de dados D.
 Após isso imaginei em algum pacote que realizasse algum tipo de ORM que consumisse APIs. Porém após achar uma biblioteca um pouco desatualizada,
-    --> django-wham
-    https://github.com/mbylstra/django-wham
-
+> * [django-wham](https://github.com/mbylstra/django-wham)
 me deparei com uma resposta no stackoverflow que indagava se o django era o melhor framework no caso de consumir dados apenas de APIs.
-    --> Django models using API instead of database
-    https://stackoverflow.com/questions/44730317/django-models-using-api-instead-of-database/44736662#44736662
-
+> * [Django models using API instead of database](https://stackoverflow.com/questions/44730317/django-models-using-api-instead-of-database/44736662#44736662)
 Talvez a melhor solução fosse utilizar algum framework que utiliza-se javascript. Mas qual deles? Após analisar algumas tendencias e dar uma olhada rápida na comparação entre vue vs react que existe no site do vue.js.
-
-    --> Top JavaScript Libraries & Tech to Learn in 2018
-    https://medium.com/javascript-scene/top-javascript-libraries-tech-to-learn-in-2018-c38028e028e6
-
-    --> Comparação com Outros Frameworks
-    https://br.vuejs.org/v2/guide/comparison.html
-
+> * [Top JavaScript Libraries & Tech to Learn in 2018](https://medium.com/javascript-scene/top-javascript-libraries-tech-to-learn-in-2018-c38028e028e6)
+> * [Comparação com Outros Frameworks](https://br.vuejs.org/v2/guide/comparison.html)
 Escolhi fazer a camada de Disponibilização dos Dados com React. Outro fator que influenciou minha decisão foi um projeto que ajudei a desenvolver, onde o front-end consumia os dados de APIs de maneira semelhante.
 
 ## Escalabilidade
 
-dissertar sobre as estratégias de escalabilidade do sistema
+Para escalar o projeto, o kubernets poderá ser usado para controlar novas replicas, caso a aplicação não esteja aguentando o numero de requisições ou processamento.
+Ferramentas de teste de apis como o [locust](https://docs.locust.io/en/stable/) guiariam o desenvolvimento de melhorias de performance dos micro serviços.
+Além disso alguns ajustes na configuração dos workers no gunicorn podem melhorar a manipulação das requisições de maneira modesta.
 
-workers no guicorn
+## Método e Desenvolvimento
+
+Iniciei o estudo do material disponibilizado na sexta-feira de noite. No sábado realizei a pesquisa para escolher quais as melhores tecnologias para cada parte do projeto, além de fazer um rascunho da arquitetura do sistema. No domingo realizei a parte de desenvolvimento.
+
+Para realizar o desenvolvimento me planejei da seguinte maneira:
+1. Criação das bases de dados em docker compose
+    1. Estudar SQL Alchemy
+    2. Criar Modelos
+2. Desenvolvimento das rest apis em flask
+    1. Estudar flask REATfull framework
+    2. fazer micro serviço A
+3. Front end em React basico
+    1. procurar boilerplate
+    2. fazer Disponibilização dos Dados
+
+Infelizmente alguns contra tempos surgiram no decorrer do desenvolvimento da aplicação, devido a falta de conhecimento prévio de algumas ferramentas.
+Me planejei para utilizar a metodologia do TDD, porém resolvi mudar de ideia pois ela estava retardando o processo (visto que o tempo de desenvolvimento restante era de apenas um dia).
+
+No estado atual da aplicação o unico micro serviço funcional é o micro serviço A. Apesar do mesmo não possuir um alto nível de tratamento de erros.
+
+## Como utilizar o projeto
+
+Para executar o projeto, basta ter o `<docker>` o `<docker-compose>` instalados e executar o `<up>`
+
+> Aviso:
+> Para inicializar os dados da Base A, é necessário executar os seguintes comandos em algum ambiente com os requirements do micro serviço A instalados devidamente. O script deve ser executado enquanto o serviço do postgres (base A) estiver em execução.
+> 
+> ```python
+> from base_a.manager import Manager
+> 
+> manager = Manager()
+> manager.start_db()
+> ```
 
 ## Melhorias
 
-http://flask-sqlalchemy.pocoo.org/2.3/
-
-https://docs.locust.io/en/stable/
+* Aumentar o nível de tratamento de erro da API.
+* Criar script de fácil execução para inicializar as bases de dados.
+* Adicionar testes e CI no projeto.
+* Desenvolver os outros micro serviços.
+* Criar a aplicação de Disponibilização dos Dados.
+* Utilizar métricas para medir o desempenho dos micro serviços.
+* [flask-sqlalchemy](http://flask-sqlalchemy.pocoo.org/2.3/)
