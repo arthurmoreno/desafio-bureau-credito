@@ -76,36 +76,24 @@ O livro trás alguns pontos que ajudaram na minha decisão:
 > * Finalmente, quanto mais você sabe sobre um sistema, melhor você será capaz de torna-lo seguro.
 > * Por fim, a base de dados mais segura é aquela que você mais tem conhecimento e experiência!
 
-Escolhi o Postgres pois já possuo certa familiaridade com ele. Além disso o Postgres possui o menor numero de issues reportadas e possui varios niveis de segurança.
+Escolhi o Postgres pois além de já possuir certa familiaridade com ele, o mesmo possui o menor numero de issues reportadas e possui varios niveis de segurança.
 > * [Leveis de segurança do postgres](https://www.postgresql.org/docs/7.0/static/security.htm)
 
 #### Detalhes de acesso a base
-
-A base precisa ser extremamente segura!!! Não precisa de performance.
 
 A base A somente poderá ser acessada de determinados hosts com ips cadastrados no banco(?). Os microserviços e nano-serviços que acessarem a base A deverão estar devidamente cadastrados.
 
 Além disso as ROLES desses serviços devem ser bem restritas ao seu uso. Não conceder permissões desnecessárias.
 Desenvolvedores não devem possuir acesso total a base de dados A. Apenas as aplicações que as consomem devem possuir esse acesso. (-- como garantir que isso ocorra na prática ? --)
 
-O acesso a base de dados A deverá ser monitorado (em dashboards ou relatórios) para permitir aos responsaveis da base de dados A poder conferir se os acessos à ela estão sendo condizentes com o uso pelos micro serviços.
-
-Como administrar USERs e ROLEs em um banco de dados seguro?
+O acesso a base de dados A deverá ser monitorado (em dashboards ou relatórios) para permitir aos responsaveis da base de dados A poder conferir se os acessos à ela estão sendo condizentes com o uso pelos micro serviços. De preferencia a auditoria da base deve ficar separada do servidor da aplicação. Garantir o entendimento dos dados e informações providas pelas ferramentas de auditoria de bases.
 
 Proteger a base de dados A de SQL Injection e Web shell (Para evitar web shell proteger as credenciais das aplicações que consomem a base de dados A).
 
-Auditoria da base de dados A!!! (diferencial) de preferencia a auditoria da base deve ficar separada do servidor da aplicação. Garantir o entendimento dos dados e informações providas pelas ferramentas de auditoria de bases.
-
-Aplicação de normas de segurança ----- ISO/IEC 27000
-    links:
-        http://www.iso27001security.com/html/27000.html
-        http://standards.iso.org/ittf/PubliclyAvailableStandards/c073906_ISO_IEC_27000_2018_E.zip (donwload da mais recente)
-        https://www.portalgsti.com.br/2013/12/as-normas-da-familia-iso-27000.html (diferenças entre as familias)
-
-Qual das variações da norma utilizar?
-O texto e leitura é muito extenso, como referenciar a norma ou utilizar RAPIDO?
-        como extrair informações uteis em pouco tempo da norma para aplicar conceitos no desafio?
-
+Aplicação de normas de segurança - ISO/IEC 27000
+> * [ISO/IEC 27000](http://www.iso27001security.com/html/27000.html)
+> * [download da norma - ISO/IEC 27000](http://standards.iso.org/ittf/PubliclyAvailableStandards/c073906_ISO_IEC_27000_2018_E.zip)
+> * [diferenças entre as familias da norma](https://www.portalgsti.com.br/2013/12/as-normas-da-familia-iso-27000.html)
 
 #### Escolha:
 * PostgreSQL
