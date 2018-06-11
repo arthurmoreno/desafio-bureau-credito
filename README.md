@@ -1,5 +1,7 @@
 # Desafio Bureau de Credito
 
+> Atalho: [Como executar o projeto](https://github.com/arthurmoreno/desafio-bureau-credito#como-utilizar-o-projeto)
+
 ## Problema
 
 Aqui trabalhamos constantemente com grande volume e complexidade de dados. Sabendo disso,
@@ -192,7 +194,7 @@ Me planejei para utilizar a metodologia do TDD, porém resolvi mudar de ideia po
 
 No estado atual da aplicação o unico micro serviço funcional é o micro serviço A. Apesar do mesmo não possuir um alto nível de tratamento de erros.
 
-## Como utilizar o projeto
+## Como executar o projeto
 
 Para executar o projeto, basta ter o `docker` o `docker-compose` instalados e executar o `up`
 
