@@ -194,7 +194,15 @@ No estado atual da aplicação o unico micro serviço funcional é o micro servi
 
 ## Como utilizar o projeto
 
-Para executar o projeto, basta ter o `<docker>` o `<docker-compose>` instalados e executar o `<up>`
+Para executar o projeto, basta ter o `docker` o `docker-compose` instalados e executar o `up`
+
+```
+docker-compose up
+```
+ou docker run caso queira executar apenas um micro serviço:
+```
+docker-compose run -p 5000:5000 social-id-fetcher
+```
 
 > Aviso:
 > Para inicializar os dados da Base A, é necessário executar os seguintes comandos em algum ambiente com os requirements do micro serviço A instalados devidamente. O script deve ser executado enquanto o serviço do postgres (base A) estiver em execução.
