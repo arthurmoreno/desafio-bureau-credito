@@ -159,11 +159,14 @@ O micro serviço C deve ser capaz de condensar todas as informações referentes
 Inicialmente imaginei uma solução em django com uma logica que iria atualizar uma quarta base de dados (base D). Essa quarta base de dados se comportaria como uma cache. Quando um dado fosse solicitado pelo front-end a aplicação django iria verificar a existencia do mesmo na quarta base (através do ORM do django), e caso o dado não existisse ele deveria ser solicitado aos micro-serviços. Porém ao pesquisar se existia algum tipo de pacote que resolvesse o problema, percebi que essa solução poderia ser bastante lenta, pois o front-end estaria aguardando a atualização dos dados na base de dados D.
 Após isso imaginei em algum pacote que realizasse algum tipo de ORM que consumisse APIs. Porém após achar uma biblioteca um pouco desatualizada,
 > * [django-wham](https://github.com/mbylstra/django-wham)
+
 me deparei com uma resposta no stackoverflow que indagava se o django era o melhor framework no caso de consumir dados apenas de APIs.
 > * [Django models using API instead of database](https://stackoverflow.com/questions/44730317/django-models-using-api-instead-of-database/44736662#44736662)
+
 Talvez a melhor solução fosse utilizar algum framework que utiliza-se javascript. Mas qual deles? Após analisar algumas tendencias e dar uma olhada rápida na comparação entre vue vs react que existe no site do vue.js.
 > * [Top JavaScript Libraries & Tech to Learn in 2018](https://medium.com/javascript-scene/top-javascript-libraries-tech-to-learn-in-2018-c38028e028e6)
 > * [Comparação com Outros Frameworks](https://br.vuejs.org/v2/guide/comparison.html)
+
 Escolhi fazer a camada de Disponibilização dos Dados com React. Outro fator que influenciou minha decisão foi um projeto que ajudei a desenvolver, onde o front-end consumia os dados de APIs de maneira semelhante.
 
 ## Escalabilidade
