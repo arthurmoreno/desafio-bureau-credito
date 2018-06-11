@@ -214,6 +214,32 @@ docker-compose run -p 5000:5000 social-id-fetcher
 > manager.start_db()
 > ```
 
+Com o micro serviço rodando, basta enviar uma requisição para http://localhost:5000/<cpf>
+Se o cpf existir na base de dados o serviço irá retornar o payload como abaixo:
+```python
+payload = {
+    'cpf': String,
+    'name': String,
+    'address': String,
+    'dividas': [{
+        'company': String,
+        'value': Inteiro,
+        'status': String,
+        'contract': Inteiro
+    }]
+}
+
+```
+> Aviso:
+> Para localizar uma pessoa aleatória na base de dados use o snipet abaixo:
+> 
+> ```python
+> from base_a.manager import Manager
+> 
+> manager = Manager()
+> person = manager.get_random_person()
+> ```
+
 ## Melhorias
 
 * Aumentar o nível de tratamento de erro da API.
