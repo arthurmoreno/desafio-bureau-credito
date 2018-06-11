@@ -64,6 +64,8 @@ services:
     build:
       context: ./social_id_fetcher
       dockerfile: Dockerfile
+    depends_on:
+      - postgres
     env_file:
       - ./social_id_fetcher/.env
     links:
