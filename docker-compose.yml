@@ -11,7 +11,10 @@ volumes:
 
 services:
 
-  # Bases de dados externas (executadas localmente para essa prova de conceito)
+  #######################################################
+  #               Bases de dados externas               #
+  # (executadas localmente para essa prova de conceito) #
+  #######################################################
 
   postgres:
     restart: always
@@ -19,7 +22,6 @@ services:
     hostname: postgres
     container_name: postgres
     environment:
-      # - DEBUG=false
       - POSTGRES_USER=bureau
       - POSTGRES_PASSWORD=bureau
       - POSTGRES_DB=bureau
@@ -38,7 +40,10 @@ services:
     ports:
       - 6603:3306
     environment:
-      MYSQL_ROOT_PASSWORD: "mypassword"
+       - MYSQL_ROOT_PASSWORD=mypassword
+       - MYSQL_DATABASE=bureau
+       - MYSQL_USER=bureau
+       - MYSQL_PASSWORD=bureau
     volumes:
       - mysql-bureau:/var/lib/mysql
 
@@ -54,7 +59,9 @@ services:
     ports:
       - 27017:27017
 
-  # Nanoserviços e Microserviços
+  #######################################################
+  #           Nanoserviços e Microserviços              #
+  #######################################################
 
   social-id-fetcher:
     restart: 'no'
@@ -74,3 +81,22 @@ services:
       - 5000
     ports:
       - 5000:5000
+
+  score-calculator:
+    restart: 'no'
+    container_name: score-calculator
+    volumes:
+      - ./score_calculator:/app
+    build:
+      context: ./score_calculator
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql
+    env_file:
+      - ./score_calculator/.env
+    links:
+      - mysql
+    expose:
+      - 6000
+    ports:
+      - 6000:6000
