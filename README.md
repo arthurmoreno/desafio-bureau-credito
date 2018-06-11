@@ -134,14 +134,9 @@ cionados a um determinado CPF.
 #### Escolha:
 * MongoDB
 
-#### Motivo:
 Por se tratar de alta velocidade de acesso aos dados e não necessitar de segurança nos dados. Além de possuir familiaridade com a ferramenta.
-
-    --> MongoDB vs MySQL Comparison: Which Database is Better?
-    https://hackernoon.com/mongodb-vs-mysql-comparison-which-database-is-better-e714b699c38b
-
-    --> Evaluating NoSQL performance: Which database is right for your data?
-    https://jaxenter.com/evaluating-nosql-performance-which-database-is-right-for-your-data-107481.html
+> * [MongoDB vs MySQL Comparison: Which Database is Better?](https://hackernoon.com/mongodb-vs-mysql-comparison-which-database-is-better-e714b699c38b)
+> * [Evaluating NoSQL performance: Which database is right for your data?](https://jaxenter.com/evaluating-nosql-performance-which-database-is-right-for-your-data-107481.html)
 
 ## Trafego
 
