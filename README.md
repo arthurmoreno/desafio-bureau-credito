@@ -1,7 +1,5 @@
 # Desafio Bureau de Credito
 
-> Atalho: [Como executar o projeto](https://github.com/arthurmoreno/desafio-bureau-credito#como-utilizar-o-projeto)
-
 ## Problema
 
 Aqui trabalhamos constantemente com grande volume e complexidade de dados. Sabendo disso,
