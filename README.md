@@ -214,7 +214,7 @@ docker-compose run -p 5000:5000 social-id-fetcher
 > manager.start_db()
 > ```
 
-Com o micro serviço rodando, basta enviar uma requisição para http://localhost:5000/<cpf>
+Com o micro serviço rodando, basta enviar uma requisição para `http://localhost:5000/<cpf>`
 Se o cpf existir na base de dados o serviço irá retornar o payload como abaixo:
 ```python
 payload = {
