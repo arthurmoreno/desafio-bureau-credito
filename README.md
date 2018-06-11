@@ -76,6 +76,9 @@ O livro trás alguns pontos que ajudaram na minha decisão:
 > * Finalmente, quanto mais você sabe sobre um sistema, melhor você será capaz de torna-lo seguro.
 > * Por fim, a base de dados mais segura é aquela que você mais tem conhecimento e experiência!
 
+#### Escolha:
+* PostgreSQL
+
 Escolhi o Postgres pois além de já possuir certa familiaridade com ele, o mesmo possui o menor numero de issues reportadas e possui varios niveis de segurança.
 > * [Leveis de segurança do postgres](https://www.postgresql.org/docs/7.0/static/security.htm)
 
@@ -95,8 +98,6 @@ Aplicação de normas de segurança - ISO/IEC 27000
 > * [download da norma - ISO/IEC 27000](http://standards.iso.org/ittf/PubliclyAvailableStandards/c073906_ISO_IEC_27000_2018_E.zip)
 > * [diferenças entre as familias da norma](https://www.portalgsti.com.br/2013/12/as-normas-da-familia-iso-27000.html)
 
-#### Escolha:
-* PostgreSQL
 
 ### Base B
 
@@ -114,15 +115,9 @@ precisam analisar o risco envolvido em uma operação de crédito a uma entidade
 #### Escolha:
 * MySQL
 
-MySql possui segurança e é mais rápido do que Postgres
-Postgres é lento (1)
-Elastic search não prove funcionalidades de segurança (2)
-
-    -links:
-        1 - https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems
-
-        2 - https://www.quora.com/Why-shouldnt-I-use-ElasticSearch-as-my-primary-datastore
-
+MySql possui segurança e é mais rápido do que Postgres. Pensei na possibilidade de utilizar o Elastic search porém ele não prove funcionalidades de segurança.
+> * [SQLite vs MySQL vs PostgreSQL](https://www.digitalocean.com/community/tutorials/sqlite-vs-mysql-vs-postgresql-a-comparison-of-relational-database-management-systems)
+> * [Why shouldn't I use ElasticSearch as my primary datastore?](https://www.quora.com/Why-shouldnt-I-use-ElasticSearch-as-my-primary-datastore)
 
 ### Base C
 
