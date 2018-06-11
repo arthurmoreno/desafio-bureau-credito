@@ -18,12 +18,17 @@ segurança em TI. Afinal, nosso principal ativo são dados sensíveis dos consum
 A primeira delas, que chamamos de Base A, é extremamente sensível e deve ser protegida com os maiores níveis de segurança, mas o acesso a esses dados não precisa ser tão performática.
 
 #### Dados:
-* CPF
-* Nome
-* Endereço
-* Lista de dívidas
+* Pessoa
+    * CPF
+    * Nome
+    * Endereço
+    * Lista de dívidas
 
-* Como acessar de maneira extremamente segura?
+* Divida:
+    * Empresa
+    * Valor
+    * Status
+    * contrato
 
 #### Segurança
 
@@ -53,7 +58,7 @@ Iniciei minha pesquisa para escolher a arquitetura da base de dados A, pesquisan
 
 Apesar dessa pesquisa ter ajudado em como deixar a sua aplicação mais segura e como utilizar melhor os recursos de um banco de dados, ela não deixava claro como efetuar uma boa escolha em relação a qual Sistema de Gerenciamento de Banco de Dados (DMS) utilizar. Por essa razão comecei a realizar outra pesquisa para responder a outra pergunta:
 
- - Como escolher uma base de dados (DMS) para dados sensíveis? pagina 31
+> Como escolher uma base de dados (DMS) para dados sensíveis?
 
 Após passar algum tempo pesquisando comparações na internet sobre os diversos sistemas de banco de dados disponíveis no mercado e na comunidade. Percebi que posts de usuários na internet muitas vezes não são conclusivos e as vezes tendenciosos. (Nesse ponto havia escolhido o OracleDB para a Base de dados A)
 
@@ -62,10 +67,9 @@ Após passar algum tempo pesquisando comparações na internet sobre os diversos
 > * [MySQL vs Oracle](https://itxdesign.com/mysql-vs-oracle/)
 
 Felizmente após realizar uma busca um pouco mais extensa sobre o assunto na internet, descobri o livro 'Database Hacker's Handbook' em uma resposta no stackoverflow
-    --> PostgreSQL's Security Compared to MySQL, etc
-    https://stackoverflow.com/questions/6475228/postgresqls-security-compared-to-mysql-etc
-
+> * [PostgreSQL's Security Compared to MySQL, etc](https://stackoverflow.com/questions/6475228/postgresqls-security-compared-to-mysql-etc)
 --=== Continuar a redação desta parte ===--
+
 
 * quantidade de issues de segurança em cada DMS
 * diferentes DMS foram analisadas de formas diferentes, algumas estão a mais tempo no mercado e foram analisadas por mais estudos. Além disso cada uma delas tem falhas diferentes das outras, 
@@ -199,3 +203,9 @@ Escolhi fazer a camada de Disponibilização dos Dados com React. Outro fator qu
 dissertar sobre as estratégias de escalabilidade do sistema
 
 workers no guicorn
+
+## Melhorias
+
+http://flask-sqlalchemy.pocoo.org/2.3/
+
+https://docs.locust.io/en/stable/
