@@ -9,12 +9,20 @@ api = Api(app)
 class Person(Resource):
     def get(self, cpf):
         manager = Manager()
-        people = manager.get_people(cpf)
-        return {
-            'cpf': people.cpf,
-            'name': people.name,
-            'address': people.address
+        person = manager.get_person(cpf)
+
+        payload = {
+            'cpf': person.cpf,
+            'name': person.name,
+            'address': person.address,
+            'dividas': [{
+                'company': divida.company,
+                'value': divida.value,
+                'status': divida.status,
+                'contract': divida.contract
+            } for divida in person.dividas]
         }
+        return payload
 
 api.add_resource(Person, '/<string:cpf>')
 
