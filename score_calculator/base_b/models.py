@@ -10,25 +10,23 @@ Base = declarative_base()
 class Person(Base):
     __tablename__ = 'person'
 
-    cpf = Column(String, primary_key=True)
-    name = Column(String)
-    address = Column(String)
-    dividas = relationship("Divida", lazy='subquery')
+    cpf = Column(String(12), primary_key=True)
+    age = Column(Integer)
+    address = Column(String(50))
+    assets = relationship("Asset", lazy='subquery')
 
     def __repr__(self):
         return f'<Person(cpf={self.cpf}, name={self.name})>'
 
 
-class Divida(Base):
-    __tablename__ = 'divida'
+class Asset(Base):
+    __tablename__ = 'asset'
 
     id = Column(Integer, primary_key=True)
-    company = Column(String)
+    name = Column(String(50))
     value = Column(Integer)
-    status = Column(String)
-    contract = Column(Integer)
 
-    person_cpf = Column(String, ForeignKey('person.cpf'))
+    person_cpf = Column(String(12), ForeignKey('person.cpf'))
 
     def __repr__(self):
-        return f'<Divida(company={self.company}, value={self.value})>'
+        return f'<Asset(company={self.company}, value={self.value})>'
