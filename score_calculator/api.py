@@ -18,7 +18,7 @@ class Person(Resource):
                 'score': calculate_score(person),
                 'age': person.age,
                 'address': person.address,
-                'dividas': [{
+                'assets': [{
                     'name': asset.name,
                     'value': asset.value
                 } for asset in person.assets]
