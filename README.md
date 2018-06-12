@@ -197,6 +197,34 @@ No estado atual da aplicação o unico micro serviço funcional é o micro servi
 
 ## Como executar o projeto
 
+### Inicializando as Bases
+
+Para inicializar as bases de dados deve-se executar o serviço db-admin.
+```
+docker-compose run db-admin
+```
+Com os containers das bases levantados deve-se executar um procedimento na base B (MySql) para alterar o modo de autenticação de usuarios. Para isso o procedimento se encontra em /score_calculator/base_b/mysql-auth-method.query (logo abaixo uma copia do procedimento):
+
+```
+# Entrando no container da Base B
+docker-compose exec mysql /bin/bash
+
+# Entrando no console do MySql
+mysql -u root -p
+
+# Executando alteração do modo de autenticação
+ALTER USER 'bureau'@'%' IDENTIFIED WITH mysql_native_password BY 'bureau';
+```
+Esse processedimento só precisa ser executado uma vez (a não ser que o volume seja removido). Após isso no serviço do db-admin basta executar o script de inicialização/povoamento das bases.
+Obs: Um csv com cpfs e endereços presentes nas bases será criado.
+
+```
+/app# python db_admin.py
+/app# cat people.csv
+```
+
+### Executando o projeto
+
 Para executar o projeto, basta ter o `docker` o `docker-compose` instalados e executar o `up`
 
 ```
@@ -206,19 +234,12 @@ ou docker run caso queira executar apenas um micro serviço:
 ```
 docker-compose run -p 5000:5000 social-id-fetcher
 ```
+### Endpoints e Payloads
 
-> Aviso:
-> Para inicializar os dados da Base A, é necessário executar os seguintes comandos em algum ambiente com os requirements do micro serviço A instalados devidamente. O script deve ser executado enquanto o serviço do postgres (base A) estiver em execução.
-> 
-> ```python
-> from base_a.manager import Manager
-> 
-> manager = Manager()
-> manager.start_db()
-> ```
+#### Micro serviço A
 
-Com o micro serviço rodando, basta enviar uma requisição para `http://localhost:5000/<cpf>`
-Se o cpf existir na base de dados o serviço irá retornar o payload como abaixo:
+* Endpoint: `http://localhost:5000/person/<cpf>`
+
 ```python
 payload = {
     'cpf': String,
@@ -231,17 +252,24 @@ payload = {
         'contract': Inteiro
     }]
 }
-
 ```
-> Aviso:
-> Para localizar uma pessoa aleatória na base de dados use o snipet abaixo:
-> 
-> ```python
-> from base_a.manager import Manager
-> 
-> manager = Manager()
-> person = manager.get_random_person()
-> ```
+
+#### Micro serviço B
+
+* Endpoint: `http://localhost:5000/score/<cpf>`
+
+```python
+payload = {
+    'cpf': String,
+    'score': Inteiro,
+    'age': Inteiro,
+    'address': String,
+    'assets': [{
+        'name': String,
+        'value': Inteiro
+    }]
+}
+```
 
 ## Melhorias
 
