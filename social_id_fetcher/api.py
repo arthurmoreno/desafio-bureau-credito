@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, abort
 from flask_restful import Resource, Api
 
 from base_a.manager import Manager
@@ -8,23 +8,26 @@ api = Api(app)
 
 class Person(Resource):
     def get(self, cpf):
-        manager = Manager()
-        person = manager.get_person(cpf)
+        try:
+            manager = Manager()
+            person = manager.get_person(cpf)
 
-        payload = {
-            'cpf': person.cpf,
-            'name': person.name,
-            'address': person.address,
-            'dividas': [{
-                'company': divida.company,
-                'value': divida.value,
-                'status': divida.status,
-                'contract': divida.contract
-            } for divida in person.dividas]
-        }
-        return payload
+            payload = {
+                'cpf': person.cpf,
+                'name': person.name,
+                'address': person.address,
+                'dividas': [{
+                    'company': divida.company,
+                    'value': divida.value,
+                    'status': divida.status,
+                    'contract': divida.contract
+                } for divida in person.dividas]
+            }
+            return payload
+        except AttributeError:
+            abort(400)
 
-api.add_resource(Person, '/<string:cpf>')
+api.add_resource(Person, '/person/<string:cpf>')
 
 if __name__ == '__main__':
     app.run(debug=True)

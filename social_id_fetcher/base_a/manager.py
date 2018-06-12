@@ -41,17 +41,17 @@ class Manager(object):
         return session.query(Person).offset(
             int(PEOPLE_COUNT*random.random())).first()
     
-    def generate_persons(self):
+    def generate_people(self, id_list):
         Session = sessionmaker(bind=self.engine)
         session = Session()
 
         persons = []
         dividas = []
-        for _ in range(PEOPLE_COUNT):
+        for person_info in id_list:
             person = Person(
-                cpf=cpf_generator(),
+                cpf=person_info['cpf'],
                 name=name_generator(),
-                address=address_generator()
+                address=person_info['address']
             )
             persons.append(person)
 
@@ -69,4 +69,4 @@ class Manager(object):
     
     def start_db(self):
         self.restart_models_tables()
-        self.generate_persons()
+        self.generate_people()
