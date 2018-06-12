@@ -35,10 +35,10 @@ services:
   mysql:
     image: mysql
     hostname: mysql
-    restart: on-failure
+    restart: always
     container_name: mysql
     ports:
-      - 6603:3306
+      - 3306:3306
     environment:
        - MYSQL_ROOT_PASSWORD=mypassword
        - MYSQL_DATABASE=bureau
@@ -58,6 +58,21 @@ services:
       - 27017
     ports:
       - 27017:27017
+
+  db-admin:
+    build:
+      context: .
+      dockerfile: db_admin/Dockerfile
+    depends_on:
+      - postgres
+      - mysql
+      - mongo
+    env_file:
+      - ./db_admin/.env
+    links:
+      - postgres
+      - mysql
+      - mongo
 
   #######################################################
   #           Nanoserviços e Microserviços              #
@@ -97,6 +112,6 @@ services:
     links:
       - mysql
     expose:
-      - 6000
+      - 5050
     ports:
-      - 6000:6000
+      - 5050:5050
