@@ -256,7 +256,7 @@ payload = {
 
 #### Micro serviço B
 
-* Endpoint: `http://localhost:5000/score/<cpf>`
+* Endpoint: `http://localhost:5050/score/<cpf>`
 
 ```python
 payload = {
