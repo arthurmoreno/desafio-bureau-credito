@@ -276,7 +276,7 @@ payload = {
 * Aumentar o nível de tratamento de erro da API.
 * Criar script de fácil execução para inicializar as bases de dados.
 * Adicionar testes e CI no projeto.
-* Desenvolver os outros micro serviços.
+* Desenvolver o micro serviços C.
 * Criar a aplicação de Disponibilização dos Dados.
 * Utilizar métricas para medir o desempenho dos micro serviços.
 * [flask-sqlalchemy](http://flask-sqlalchemy.pocoo.org/2.3/)
