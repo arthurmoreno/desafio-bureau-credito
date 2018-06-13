@@ -271,12 +271,34 @@ payload = {
 }
 ```
 
+#### Micro serviço C
+
+* Endpoint: `http://localhost:5055/trail/<cpf>`
+
+```python
+payload = {
+    'cpf': String,
+    'last_query': Data,
+    'last_purchase': {
+        'company': String,
+        'date': Data,
+        'value': Float,
+    },
+    'transactions': [{
+        'date': Data,
+        'value': Float
+    }]
+}
+```
+
 ## Melhorias
 
 * Aumentar o nível de tratamento de erro da API.
-* Criar script de fácil execução para inicializar as bases de dados.
+* Criar script de fácil execução para inicializar as bases de dados. (:construction_worker:)
 * Adicionar testes e CI no projeto.
-* Desenvolver o micro serviços C.
-* Criar a aplicação de Disponibilização dos Dados.
+* Desenvolver o micro serviços B. (:on:)
+* Desenvolver o micro serviços C. (:on:)
+* Melhorar endpoints e payloads.
+* Criar a aplicação de Disponibilização dos Dados. (:running:) (:soon:)
 * Utilizar métricas para medir o desempenho dos micro serviços.
 * [flask-sqlalchemy](http://flask-sqlalchemy.pocoo.org/2.3/)
