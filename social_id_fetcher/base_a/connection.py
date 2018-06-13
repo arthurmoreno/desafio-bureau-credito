@@ -3,7 +3,6 @@ import os
 from sqlalchemy import create_engine
 
 
-# todo: pegar url de settings
 LOCALHOST_URL = 'postgresql+psycopg2://bureau:bureau@localhost/bureau'
 POSTGRES_URL = os.getenv('POSTGRES_URL', LOCALHOST_URL)
 
