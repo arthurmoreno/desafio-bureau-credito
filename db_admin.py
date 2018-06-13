@@ -3,12 +3,14 @@ import csv
 
 sys.path.insert(0, './social_id_fetcher')
 sys.path.insert(0, './score_calculator')
+sys.path.insert(0, './social_trail_fetcher')
 
 from pycpfcnpj.gen import cpf as cpf_generator
 
 from base_a.manager import Manager as ManagerA
 from base_a.utils import address_generator
 from base_b.manager import Manager as ManagerB
+from base_c.manager import Manager as ManagerC
 
 
 PEOPLE_COUNT = 1000
@@ -30,6 +32,11 @@ def generate_data():
     manager_b = ManagerB()
     manager_b.restart_models_tables()
     manager_b.generate_people(id_list)
+
+    print('Gerando dados para Base C')
+    manager_c = ManagerC()
+    manager_c.drop_collection()
+    manager_c.generate_people(id_list)
 
     with open('people.csv', 'w', newline='') as csvfile:
         peoplewriter = csv.writer(csvfile, delimiter=' ',
