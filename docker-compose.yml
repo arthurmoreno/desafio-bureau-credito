@@ -60,6 +60,8 @@ services:
       - 27017:27017
 
   db-admin:
+    volumes:
+      - .:/app
     build:
       context: .
       dockerfile: db_admin/Dockerfile
@@ -115,3 +117,22 @@ services:
       - 5050
     ports:
       - 5050:5050
+
+  social-trail-fetcher:
+    restart: 'no'
+    container_name: social-trail-fetcher
+    volumes:
+      - ./social_trail_fetcher:/app
+    build:
+      context: ./social_trail_fetcher
+      dockerfile: Dockerfile
+    depends_on:
+      - mongo
+    env_file:
+      - ./social_trail_fetcher/.env
+    links:
+      - mongo
+    expose:
+      - 5055
+    ports:
+      - 5055:5055
