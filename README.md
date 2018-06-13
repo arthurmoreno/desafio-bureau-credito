@@ -300,6 +300,6 @@ payload = {
 * Desenvolver o micro serviços C. (:on:)
 * Adicionar cache nos micro serviços.
 * Melhorar endpoints e payloads.
-* Criar a aplicação de Disponibilização dos Dados. (:running:) (:soon:)
+* Criar a aplicação de Disponibilização dos Dados. (:construction_worker:) (:soon:)
 * Utilizar métricas para medir o desempenho dos micro serviços.
 * [flask-sqlalchemy](http://flask-sqlalchemy.pocoo.org/2.3/)
