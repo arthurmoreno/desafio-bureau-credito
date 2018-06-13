@@ -298,6 +298,7 @@ payload = {
 * Adicionar testes e CI no projeto.
 * Desenvolver o micro serviços B. (:on:)
 * Desenvolver o micro serviços C. (:on:)
+* Adicionar cache nos micro serviços.
 * Melhorar endpoints e payloads.
 * Criar a aplicação de Disponibilização dos Dados. (:running:) (:soon:)
 * Utilizar métricas para medir o desempenho dos micro serviços.
