@@ -8,10 +8,10 @@ api = Api(app)
 
 class Person(Resource):
     def get(self, cpf):
-        try:
-            manager = Manager()
-            person = manager.get_person(cpf)
+        manager = Manager()
+        person = manager.get_person(cpf)
 
+        if person:
             payload = {
                 'cpf': person.cpf,
                 'name': person.name,
@@ -24,7 +24,7 @@ class Person(Resource):
                 } for divida in person.dividas]
             }
             return payload
-        except AttributeError:
+        else:
             abort(400)
 
 api.add_resource(Person, '/person/<string:cpf>')

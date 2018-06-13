@@ -9,10 +9,10 @@ api = Api(app)
 
 class Person(Resource):
     def get(self, cpf):
-        try:
-            manager = Manager()
-            person = manager.get_person(cpf)
+        manager = Manager()
+        person = manager.get_person(cpf)
 
+        if person:
             payload = {
                 'cpf': person.cpf,
                 'score': calculate_score(person),
@@ -24,7 +24,7 @@ class Person(Resource):
                 } for asset in person.assets]
             }
             return payload
-        except AttributeError:
+        else:
             abort(400)
 
 api.add_resource(Person, '/score/<string:cpf>')
